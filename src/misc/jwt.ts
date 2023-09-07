@@ -26,6 +26,7 @@ export function createJWT(iss: string, duration: number,typ: string, sub: number
         role : role,
         ip : ip,
         ua : ua,
+        typ: typ,
         iat : now,
         exp : exp
     }

@@ -6,7 +6,13 @@ const repo = AppDataSource.getRepository(User)
 
 export class UserService{
 
-
+    public static async getAllStudents() {
+        const data = await repo.find({
+            
+            
+        });
+        return data
+    }
 
 
     public static async getAllUsers(){
@@ -25,7 +31,14 @@ export class UserService{
         return data
     }
 
-    public static async getUserById(){}
+    public static async getUserById(id : number){
+        const data = await repo.findOne({
+            where:{
+                userId : id
+            }
+        });
+        return data;
+    }
 
     public static async createUser(user: User){
         delete user.userId
@@ -39,6 +52,8 @@ export class UserService{
     
         return await repo.save(user)
     }
+
+   /////25min
 
 
 

@@ -7,12 +7,13 @@ import StudentRoute from './routes/student.route'
 import PredmetRoute from './routes/predmet.route'
 import OcenaRoute from './routes/ocena.route'
 import authRoute from './routes/auth.route'
-import { log } from './middlewares/log.middleware'
+import { authMiddleware } from './middlewares/auth.middleware'
+import UserRoute from './routes/user.route'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
-app.use(morgan('combined'))
+//app.use(morgan('combined'))
 
 
 dotenv.config()
@@ -26,11 +27,12 @@ AppDataSource.initialize()
         })
     })
 
-app.use(log)
+app.use('/auth', authRoute)
+app.use('/api/user', UserRoute)
+app.use(authMiddleware)
 app.use('/api/student', StudentRoute);
 app.use('/api/predmet', PredmetRoute);
 app.use('/api/ocena', OcenaRoute)
-app.use('/auth', authRoute)
 
 
 
