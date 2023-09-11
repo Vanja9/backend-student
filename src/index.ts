@@ -29,9 +29,9 @@ AppDataSource.initialize()
 
 app.use('/auth', authRoute)
 app.use('/api/user', UserRoute)
+app.use('/api/predmet', PredmetRoute);
 app.use(authMiddleware)
 app.use('/api/student', StudentRoute);
-app.use('/api/predmet', PredmetRoute);
 app.use('/api/ocena', OcenaRoute)
 
 
